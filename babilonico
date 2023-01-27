@@ -1,0 +1,22 @@
+import numpy as np
+import matplotlib.pyplot as pit
+
+x= 2. 
+n= 10 
+func= np.zeros(n)
+
+func[0]= x
+
+def update (f,x):
+    f= (x/f+f)/2.
+    return f
+
+for i in range(1,n):
+    func[i]= update(func[i-1],x)
+    
+k= np.arange(0,n,1)
+
+pit.scatter(k,func)
+pit.xlabel(r'$n$',fontsize=15)
+pit.ylabel(r'$f_{n}(x)$',fontsize=15)
+pit.axhline(y=np.sqrt(x),ls="--")
